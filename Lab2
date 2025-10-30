@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colorful Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="calculator">
+    <input id="display" readonly>
+    <div id="key">
+      <button onclick="appendToDisplay('+')" class="operator-btn">+</button>
+      <button onclick="appendToDisplay('7')">7</button>
+      <button onclick="appendToDisplay('8')">8</button>
+      <button onclick="appendToDisplay('9')">9</button>
+      <button onclick="appendToDisplay('-')" class="operator-btn">-</button>
+      <button onclick="appendToDisplay('4')">4</button>
+      <button onclick="appendToDisplay('5')">5</button>
+      <button onclick="appendToDisplay('6')">6</button>
+      <button onclick="appendToDisplay('1')">1</button>
+      <button onclick="appendToDisplay('2')">2</button>
+      <button onclick="appendToDisplay('3')">3</button>
+      <button onclick="appendToDisplay('/')" class="operator-btn">/</button>
+      <button onclick="appendToDisplay('.')">.</button>
+      <button onclick="calculator()" class="equal-btn">=</button>
+      <button onclick="clearDisplay()" class="clear-btn">C</button>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
+<script>
+    const display = document.getElementById("display");
+
+function appendToDisplay(input){
+  display.value += input;
+}
+
+function clearDisplay(){
+  display.value = "";
+}
+
+function calculator(){
+  try{
+    display.value = eval(display.value) || "";
+  } catch (error){
+    display.value = "Error";
+  }
+}
+
+</script>
+
+<style>
+    body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: hsl(0, 0%, 100%);
+}
+
+#calculator {
+    font-family: Arial, sans-serif;
+    background-color: hsl(0, 0%, 15%);
+    border-radius: 15px;
+    max-width: 500px;
+    overflow: hidden;
+}
+
+#display {
+    width: 100%;
+    padding: 5px;
+    font-size: 3rem; /* 15rem ใหญ่เกินจนหลุดจอ เปลี่ยนเป็น 3rem */
+    text-align: right;
+    border: none;
+    background-color: hsl(0, 0%, 20%);
+    color: rgb(255, 255, 255);
+}
+
+#key {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 25px;
+}
+
+button {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border: none;
+    background-color: hsl(0, 0%, 30%);
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: hsl(0, 0%, 40%);
+}
+
+button:active {
+    background-color: hsl(0, 0%, 50%);
+}
+
+/* ปุ่มเครื่องหมาย */
+.operator-btn {
+    background-color: hsl(35, 100%, 55%);
+}
+
+.operator-btn:hover {
+    background-color: hsl(35, 100%, 65%);
+}
+
+.operator-btn:active {
+    background-color: hsl(35, 100%, 75%);
+}
+
+/* ปุ่มเท่ากับและเคลียร์ */
+.equal-btn {
+    background-color: hsl(200, 100%, 50%);
+}
+
+.equal-btn:hover {
+    background-color: hsl(200, 100%, 60%);
+}
+
+.clear-btn {
+    background-color: hsl(0, 100%, 50%);
+}
+
+.clear-btn:hover {
+    background-color: hsl(0, 100%, 60%);
+}
+
+</style>
